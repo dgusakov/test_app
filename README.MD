@@ -33,7 +33,7 @@ Template should be a list of blocks:
 
 ### API spec
 
-####Upload template
+#### Upload template
 
   Upload your template file
 
@@ -67,7 +67,7 @@ Template should be a list of blocks:
    
    `deta={"tmpl_id":"my_custom_id"}`
    
-####List templates
+#### List templates
 
   List all currently uploaded templates
 
@@ -79,7 +79,7 @@ Template should be a list of blocks:
 
   `GET`
 
-####Delete template
+#### Delete template
 
   Delete previously loaded template file
 
@@ -97,7 +97,7 @@ Template should be a list of blocks:
  
    `tmpl_id=[string]`
    
-####Install template
+#### Install template
 
   Install previously loaded template file
 
