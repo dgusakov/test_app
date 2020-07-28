@@ -10,6 +10,9 @@ from errors import DependencyNotFound, NoLabelForButton, InvalidYamlFormat
 
 
 def check_dirs():
+    """
+    Check if app directories exist. Create if necessary
+    """
     for app_dir in {app.config['UPLOAD_FOLDER'], app.config['CURRENT_TEMPLATE_DIR']}:
         if not os.path.exists(app_dir):
             os.makedirs(app_dir)
@@ -20,10 +23,16 @@ def get_file_path(tmpl_id):
 
 
 def allowed_file_ext(filename):
+    """
+    Check if file extension is in 'ALLOWED_EXTENSIONS'
+    """
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 
 def validate_rec(rec):
+    """
+    Check fields in template record
+    """
     if 'id' not in rec:
         raise InvalidYamlFormat(f'No "id" field in {rec}')
     if 'link' in rec and 'label' not in rec:
@@ -31,6 +40,9 @@ def validate_rec(rec):
 
 
 def load_yaml_from_file(path):
+    """
+    Load yaml file as python object
+    """
     if not os.path.isfile(path):
         raise FileNotFoundError
     with open(path) as f:
@@ -38,6 +50,9 @@ def load_yaml_from_file(path):
 
 
 def process_template(tmpl_id):
+    """
+    Load template from file. Validate contents. Rewrite installed template file
+    """
     path = get_file_path(tmpl_id)
     template = load_yaml_from_file(path)
     if not isinstance(template, list):
