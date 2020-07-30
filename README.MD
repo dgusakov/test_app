@@ -44,12 +44,6 @@ Template should be a list of blocks:
 * **Method:**
 
   `PUT`
-  
-*  **URL Params**
-
-   **Required:**
- 
-   `id=[integer]`
 
 * **Data Params**
 
