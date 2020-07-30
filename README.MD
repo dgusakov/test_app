@@ -65,7 +65,7 @@ Template should be a list of blocks:
    
    ex:
    
-   `deta={"tmpl_id":"my_custom_id"}`
+   `data={"tmpl_id":"my_custom_id"}`
    
 #### List templates
 
