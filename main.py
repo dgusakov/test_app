@@ -25,7 +25,7 @@ def get_file_path(tmpl_id):
 
 def allowed_file_ext(filename):
     """
-    Check if file extension is in 'ALLOWED_EXTENSIONS'
+    Check if file extension is one of ALLOWED_EXTENSIONS
     """
     return (
         "." in filename
@@ -57,7 +57,7 @@ def load_yaml_from_file(path):
 
 def process_template(tmpl_id):
     """
-    Load template from file. Validate contents. Rewrite installed template file
+    Load template from the file. Validate contents. Rewrite installed template file
     """
     path = get_file_path(tmpl_id)
     template = load_yaml_from_file(path)
@@ -77,7 +77,7 @@ def process_template(tmpl_id):
     copyfile(path, join(app.config["CURRENT_TEMPLATE_FILE"]))
 
 
-@app.route("/api/v1/templates", methods=["PUT"])
+@app.route("/api/v1/templates", methods=["POST"])
 def upload_template():
     if "file" not in request.files:
         resp = jsonify({"message": "No file part in the request"})
@@ -140,7 +140,7 @@ def delete_template(tmpl_id):
             resp = jsonify({"message": f"No template with tmpl_id={tmpl_id} found!"})
             resp.status_code = HTTPStatus.NOT_FOUND
     else:
-        resp = jsonify({"message": f"No tmpl_id in request!"})
+        resp = jsonify({"message": "No tmpl_id in request!"})
         resp.status_code = HTTPStatus.BAD_REQUEST
     return resp
 
@@ -160,7 +160,7 @@ def install_template(tmpl_id):
             resp = jsonify({"message": f"No template with tmpl_id={tmpl_id} found!"})
             resp.status_code = HTTPStatus.NOT_FOUND
     else:
-        resp = jsonify({"message": f"No tmpl_id in request!"})
+        resp = jsonify({"message": "No tmpl_id in request!"})
         resp.status_code = HTTPStatus.BAD_REQUEST
     return resp
 
