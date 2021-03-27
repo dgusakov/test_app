@@ -3,7 +3,7 @@
 This is a test app.
 
 The app contains bugs.
-Some of them are meant to be there while some might be a result of my bad coding skills...
+Some of them are meant to be there while some might be usual bugs that appear during development.
 
 > **Your task is to write a set of automated tests for it using pytest framework.**
 
